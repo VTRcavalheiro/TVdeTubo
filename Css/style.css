@@ -1,0 +1,729 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fundo geral escuro */
+body {
+  background-color: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Barra do topo */
+.top-bar {
+  height: 60px;
+  background-color: rgba(34, 34, 34, 0.4);
+  padding: 0 20px;
+  border-bottom: 2px solid rgba(68, 68, 68, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Áreas da barra */
+.top-bar-left,
+.top-bar-center,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Centralizar título */
+.top-bar-center {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* Espaçamento entre ícones no topo direito */
+.top-bar-right .icon-button {
+  margin-left: 10px;
+}
+
+/* Botões dos ícones */
+.icon-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* LOGO - nova classe para imagem */
+.top-bar-logo {
+  height: 40px;        /* altura fixa para caber na barra */
+  width: auto;         /* largura proporcional */
+  margin-right: 15px;  /* espaço entre logo e demais itens */
+  user-select: none;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+/* Menu lateral estilo Twitch à esquerda */
+.side-menu {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 60px);
+  background-color: rgba(34, 34, 34, 0.8);
+  padding: 20px 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-right: 2px solid rgba(68, 68, 68, 0.58);
+  z-index: 10;
+}
+
+.side-menu ul {
+  list-style: none;
+}
+
+.side-menu li {
+  margin-bottom: 15px;
+}
+
+.side-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.side-menu a:hover {
+  background-color: rgba(85, 85, 85, 0.67);
+}
+
+/* Ajuste da área principal para não ficar por trás do menu */
+.main-content {
+  margin-left: 220px;
+  padding: 30px;
+  font-size: 1.2rem;
+}
+
+/* Título do menu lateral */
+.side-menu .menu-title {
+  color: #ccc;
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  padding-left: 12px;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Busca */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 6px 10px;
+  width: 150px;
+  background-color: transparent;
+  color: white;
+  font-size: 1rem;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  background-color: #444;
+}
+
+.search-button {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  border-left: 1px solid #444;
+}
+
+.search-button:hover {
+  background-color: #666;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  background: #222;
+  border: 1px solid #444;
+  padding: 10px;
+  z-index: 1000;
+  width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.dropdown.active .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown-menu a {
+  display: block;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #333;
+}
+
+/* Submenu de idioma */
+.language-dropdown {
+  position: relative;
+}
+
+.language-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #222;
+  border: 1px solid #444;
+  width: 100%;
+  z-index: 100;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.language-list.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.language-list li {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #fff;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.language-list li:hover {
+  background-color: #333;
+}
+
+.language-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.language-link .label {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.language-link .arrow {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+
+/* Carrossel */
+.channel-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: calc(100% - 100px); /* Ocupa mais espaço horizontal */
+  margin: 30px 50px; /* Mais perto da esquerda e da direita */
+  user-select: none;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  flex: 1;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+  padding: 20px 0;
+}
+
+.channel-card {
+  flex: 0 0 300px;
+  margin: 0 10px;
+  background: #222;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  cursor: grab;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  user-select: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.channel-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.channel-card span {
+  margin-top: 6px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90%;
+  text-align: center;
+}
+
+.channel-card:not(.active) {
+  opacity: 0.5;
+  transform: scale(0.8) translateZ(-100px);
+  cursor: pointer;
+}
+
+.channel-card.active {
+  opacity: 1;
+  cursor: default;
+  transform: scale(1) translateZ(0);
+}
+
+.carousel-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.carousel-btn:hover {
+  color: #0af;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Rodapé */
+.site-footer {
+  background-color: #1a1a1a;
+  border-top: 2px solid rgba(68, 68, 68, 0.58);
+  padding: 20px;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 220px;
+}
+
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #0af;
+}
+
+/* Canais favoritos */
+.favorite-channels {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 25px;
+}
+
+.favorite-channels li {
+  margin-bottom: 10px;
+}
+
+.favorite-channels a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.favorite-channels a:hover {
+  background-color: rgba(68, 68, 68, 0.6);
+}
+
+.channel-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.channel-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px;
+  }
+
+  .top-bar-left,
+  .top-bar-center,
+  .top-bar-right {
+    justify-content: center;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .search-wrapper {
+    margin-right: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .site-footer {
+    margin-left: 0;
+  }
+
+  .side-menu {
+    display: none; /* Você pode ativar com um botão hambúrguer depois */
+  }
+}
+
+/* Indicador de live */
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding-right: 10px; /* espaço extra para evitar corte */
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #e00;
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ff3b3b; /* vermelho vivo */
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 6px; /* espaço entre o nome e a bolinha */
+  box-shadow: 0 0 8px #ff4d4d;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px #ff4d4d;
+  }
+  50% {
+    box-shadow: 0 0 14px #ff0000;
+  }
+}
+
+/* Seção de Transmissões ao Vivo */
+.live-streams {
+  margin-top: 40px;
+  color: white;
+}
+
+.live-streams h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Container dos cards */
+.live-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+/* Card individual */
+.live-card {
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.live-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+}
+
+.live-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.live-info {
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.channel-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.live-title {
+  font-size: 0.95rem;
+  color: #ccc;
+  height: 38px; /* aprox. 2 linhas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.live-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: #bbb;
+  font-weight: 500;
+}
+
+.live-indicator {
+  color: #e00;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  letter-spacing: 0.05em;
+  font-family: Arial, sans-serif;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ff3b3b;
+  border-radius: 50%;
+  margin-left: 6px;
+  box-shadow: 0 0 8px #ff4d4d;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px #ff4d4d;
+  }
+  50% {
+    box-shadow: 0 0 14px #ff0000;
+  }
+}
+
+.viewers-count {
+  color: #aaa;
+}
+
+/* Botão de colapso do menu */
+.side-menu .collapse-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+}
+
+/* Estado colapsado do menu */
+.side-menu.collapsed {
+  width: 60px;
+}
+
+.side-menu.collapsed .menu-title,
+.side-menu.collapsed .channel-name {
+  display: none;
+}
+
+.side-menu.collapsed .collapse-toggle {
+  text-align: center;
+  transform: rotate(180deg);
+}
+
+.logo-tvdetubo {
+  width: 100%;         /* Garante que ocupe a largura total disponível */
+  max-width: 120px;    /* Limita o tamanho máximo (ajuste conforme preferir) */
+  height: auto;        /* Mantém a proporção original */
+  display: block;
+  margin: -30px auto 0 auto;      /* Centraliza a imagem no menu */
+}
+
+.private-chat-window {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.chat-header {
+  background-color: #292929;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.chat-controls button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chat-content {
+  background-color: #121212;
+  padding: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.private-chat-window.minimized .chat-content {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.home-icon { /*icone superior esquerdo*/
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}

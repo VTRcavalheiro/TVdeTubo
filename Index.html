@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV de Tubo</title>
+  <link rel="stylesheet" href="Css/style.css" />
+</head>
+
+<div class="private-chat-window hidden">
+  <div class="chat-header">
+    <span>Chat Privado</span>
+    <div class="chat-controls">
+      <button class="chat-minimize" title="Minimizar">—</button>
+      <button class="chat-close" title="Fechar">×</button>
+    </div>
+  </div>
+  <div class="chat-content">
+    <p>Nenhuma conversa ativa.</p>
+  </div>
+</div>
+
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-left">
+  <button class="icon-button" aria-label="Home" id="home-button">
+    <img src="imagens/Logo_Canto_Superior_Esquerdo/Logo.png" alt="Home" class="home-icon">
+  </button>
+</div>
+
+  
+  <div class="top-bar-center">
+    <h1>📺 TV de Tubo</h1>
+  </div>
+
+  <div class="top-bar-right">
+    <div class="search-wrapper">
+      <input type="search" placeholder="Pesquisar..." class="search-input" aria-label="Pesquisar" />
+      <button class="search-button" aria-label="Buscar">🔍</button>
+    </div>
+
+    <button class="icon-button" aria-label="Chat privado">💬</button>
+
+    <div class="dropdown">
+      <button class="icon-button avatar-button" aria-label="Perfil do usuário">
+        <img src="https://i.pravatar.cc/100" alt="Avatar" class="avatar" />
+      </button>
+      <div class="dropdown-menu">
+        <a href="#"><span>👤</span> Perfil</a>
+        <a href="#"><span>⚙️</span> Configurações</a>
+        <div class="language-dropdown">
+          <a href="#" id="language-toggle" class="language-link">
+            <span class="icon">🌐</span>
+            <span class="label">Idioma: <span id="selected-language">Português</span></span>
+            <span class="arrow">▶</span>
+          </a>
+          <ul class="language-list" id="language-list">
+            <li data-lang="Português">Português</li>
+            <li data-lang="English (US)">English (US)</li>
+            <li data-lang="Español">Español</li>
+            <li data-lang="Français">Français</li>
+            <li data-lang="Deutsch">Deutsch</li>
+          </ul>
+        </div>
+        <a href="#"><span>❓</span> Ajuda</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="side-menu">
+  <div class="menu-header">
+    <img src="imagens/Logo_Menu_Esquerdo/Logo.png" alt="Logo TV de Tubo" class="logo-tvdetubo" />
+  </div>
+  <ul>
+    <li class="menu-title">Canais Favoritos</li>
+
+    <li class="favorite-channel">
+      <a href="#">
+        <img class="channel-avatar" src="https://i.pravatar.cc/20" alt="Canal 1" />
+        <span class="channel-name">
+          Seu Zé
+          <span class="live-indicator" aria-label="Ao vivo" title="Ao vivo">
+            <span class="live-dot"></span>
+          </span>
+        </span>
+      </a>
+    </li>
+
+    <li class="favorite-channel">
+      <a href="#">
+        <img class="channel-avatar" src="https://i.pravatar.cc/30" alt="Canal 2" />
+        <span class="channel-name">Maria Live</span> <!-- Sem indicador ao vivo -->
+      </a>
+    </li>
+
+    <li class="favorite-channel">
+      <a href="#">
+        <img class="channel-avatar" src="https://i.pravatar.cc/40" alt="Canal 3" />
+        <span class="channel-name">
+          Gamer 01
+          <span class="live-indicator" aria-label="Ao vivo" title="Ao vivo">
+            <span class="live-dot"></span>
+          </span>
+        </span>
+      </a>
+    </li>
+
+    <li class="menu-title">Canais Recomendados</li>
+
+    <li class="recommended-channel">
+      <a href="#">
+        <img class="channel-avatar" src="https://i.pravatar.cc/50" alt="Canal 4" />
+        <span class="channel-name">
+          Nova Era
+          <span class="live-indicator" aria-label="Ao vivo" title="Ao vivo">
+            <span class="live-dot"></span>
+          </span>
+        </span>
+      </a>
+    </li>
+
+    <li class="recommended-channel">
+      <a href="#">
+        <img class="channel-avatar" src="https://i.pravatar.cc/60" alt="Canal 5" />
+        <span class="channel-name">TV Cultura</span> <!-- Sem indicador ao vivo -->
+      </a>
+    </li>
+
+    <li class="recommended-channel">
+      <a href="#">
+        <img class="channel-avatar" src="https://i.pravatar.cc/70" alt="Canal 6" />
+        <span class="channel-name">
+          VTRviking
+          <span class="live-indicator" aria-label="Ao vivo" title="Ao vivo">
+            <span class="live-dot"></span>
+          </span>
+        </span>
+      </a>
+    </li>
+  </ul>
+  <button class="collapse-toggle" aria-label="Alternar menu">⮜</button>
+</nav>
+
+<main class="main-content">
+
+  <!-- Seção carrossel de canais já existente -->
+  <section class="channel-carousel" aria-label="Carrossel de canais">
+    <button class="carousel-btn prev" aria-label="Canal anterior">◀</button>
+    
+    <div class="carousel-track-container">
+      <ul class="carousel-track">
+        <li class="channel-card active">
+          <img src="https://placehold.co/300x180/png?text=Canal+1" alt="Canal 1" />
+          <span>Canal 1</span>
+        </li>
+        <li class="channel-card">
+          <img src="https://placehold.co/300x180/png?text=Canal+2" alt="Canal 2" />
+          <span>Canal 2</span>
+        </li>
+        <li class="channel-card">
+          <img src="https://placehold.co/300x180/png?text=Canal+3" alt="Canal 3" />
+          <span>Canal 3</span>
+        </li>
+        <li class="channel-card">
+          <img src="https://placehold.co/300x180/png?text=Canal+4" alt="Canal 4" />
+          <span>Canal 4</span>
+        </li>
+        <li class="channel-card">
+          <img src="https://placehold.co/300x180/png?text=Canal+5" alt="Canal 5" />
+          <span>Canal 5</span>
+        </li>
+      </ul>
+    </div>
+    
+    <button class="carousel-btn next" aria-label="Próximo canal">▶</button>
+  </section>
+
+  <!-- Nova seção: Transmissões ao vivo -->
+  <section class="live-streams" aria-label="Transmissões ao vivo">
+    <h2>Transmissões Ao Vivo</h2>
+    <div class="live-cards-container">
+      <article class="live-card">
+        <img src="https://placehold.co/320x180/png?text=Streamer+1" alt="Thumbnail da live do Streamer 1" class="live-thumbnail" />
+        <div class="live-info">
+          <h3 class="channel-name">VTRviking</h3>
+          <p class="live-title" title="Jogando RPG e interagindo com o chat.">
+            Jogando RPG e interagindo com o chat.
+          </p>
+          <div class="live-meta">
+            <span class="live-indicator" aria-label="Ao vivo" title="Ao vivo">
+              AO VIVO <span class="live-dot"></span>
+            </span>
+            <span class="viewers-count">2.3k espectadores</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="live-card">
+        <img src="https://placehold.co/320x180/png?text=Streamer+2" alt="Thumbnail da live do Streamer 2" class="live-thumbnail" />
+        <div class="live-info">
+          <h3 class="channel-name">ProGamer</h3>
+          <p class="live-title" title="FPS competitivo com muita ação.">
+            FPS competitivo com muita ação.
+          </p>
+          <div class="live-meta">
+            <span class="live-indicator" aria-label="Ao vivo" title="Ao vivo">
+              AO VIVO <span class="live-dot"></span>
+            </span>
+            <span class="viewers-count">5.8k espectadores</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="live-card">
+        <img src="https://placehold.co/320x180/png?text=Streamer+3" alt="Thumbnail da live do Streamer 3" class="live-thumbnail" />
+        <div class="live-info">
+          <h3 class="channel-name">CoolStreamer</h3>
+          <p class="live-title" title="Explorando jogos indie e bate-papo.">
+            Explorando jogos indie e bate-papo.
+          </p>
+          <div class="live-meta">
+            <span class="live-indicator" aria-label="Ao vivo" title="Ao vivo">
+              AO VIVO <span class="live-dot"></span>
+            </span>
+            <span class="viewers-count">980 espectadores</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/main.js"></script>
+
+<!--RodaPé-->
+<footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 TVdeTubo. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+        <a href="#">Termos</a>
+        <a href="#">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
